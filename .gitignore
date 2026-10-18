@@ -1,0 +1,14 @@
+# Keep diagnostic output and machine-specific material private.
+.DS_Store
+Thumbs.db
+*.zip
+*.log
+opencore-*.txt
+panic-*.txt
+SysReport/
+E3-Graphics-*/
+E3-HD4000-*/
+*.ioreg
+*.dsl.bak
+config.local.plist
+config.private.plist

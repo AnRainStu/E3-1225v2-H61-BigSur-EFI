@@ -1,0 +1,8 @@
+*.md text eol=lf
+*.txt text eol=lf
+*.command text eol=lf
+*.dsl text eol=lf
+*.json text eol=lf
+*.plist -text
+*.aml binary
+*.efi binary
