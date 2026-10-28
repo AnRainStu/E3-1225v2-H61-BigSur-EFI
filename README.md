@@ -27,7 +27,7 @@
 
 ## 下载与使用
 
-1. [下载本分支 ZIP](https://github.com/AnRainStu/E3-1225v2-H61-EFI/archive/refs/heads/ventura-k420.zip)，先备份现有可启动 EFI。
+1. 在 [Ventura v1.0.0 Release](https://github.com/AnRainStu/E3-1225v2-H61-EFI/releases/tag/ventura-k420-v1.0.0) 下载 EFI 压缩包，或[下载本分支 ZIP](https://github.com/AnRainStu/E3-1225v2-H61-EFI/archive/refs/heads/ventura-k420.zip)。先备份现有可启动 EFI。
 2. 使用 [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) 为 **iMac18,2** 生成自己的身份，在 `EFI/OC/config.plist → PlatformInfo → Generic` 填写：
 
    | 字段 | 内容 |
