@@ -2,7 +2,7 @@
 
 用于 **Xeon E3-1225 v2 + H61 X7-VB V3.2 + Quadro K420 + SATA 系统盘** 的 OpenCore 配置，目标系统为 **macOS Ventura 13.7.8 (22H730)**。
 
-当前分支：`ventura-k420`。原来的 **Big Sur / P4000 核显配置**保留在 [main 分支](https://github.com/AnRainStu/E3-1225v2-H61-BigSur-EFI/tree/main)。两份 EFI 对应不同显卡和系统。
+当前分支：`ventura-k420`。原来的 **Big Sur / P4000 核显配置**保留在 [main 分支](https://github.com/AnRainStu/E3-1225v2-H61-EFI/tree/main)。两份 EFI 对应不同显卡和系统。
 
 这是特定实机的配置与第三方组件集合。公开版已清空机器身份，使用前必须自行填写 SMBIOS；第三方组件遵循各自许可。
 
@@ -27,7 +27,7 @@
 
 ## 下载与使用
 
-1. [下载本分支 ZIP](https://github.com/AnRainStu/E3-1225v2-H61-BigSur-EFI/archive/refs/heads/ventura-k420.zip)，先备份现有可启动 EFI。
+1. [下载本分支 ZIP](https://github.com/AnRainStu/E3-1225v2-H61-EFI/archive/refs/heads/ventura-k420.zip)，先备份现有可启动 EFI。
 2. 使用 [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) 为 **iMac18,2** 生成自己的身份，在 `EFI/OC/config.plist → PlatformInfo → Generic` 填写：
 
    | 字段 | 内容 |
