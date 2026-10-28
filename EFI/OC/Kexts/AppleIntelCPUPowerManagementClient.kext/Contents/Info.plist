@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>20D91</string>
+	<string>20A241133</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>FakePCIID</string>
+	<string>AppleIntelCPUPowerManagementClient</string>
+	<key>CFBundleGetInfoString</key>
+	<string>222.0.0, Copyright © 2005-2016 Apple Inc. All rights reserved.</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.rehabman.driver.FakePCIID</string>
+	<string>com.apple.driver.AppleIntelCPUPowerManagementClient</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>FakePCIID</string>
+	<string>Intel CPU Power Management Interfaces</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.16</string>
+	<string>222.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -25,31 +27,47 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.3.16</string>
+	<string>222.0.0</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>12E262</string>
+	<string>21G113</string>
 	<key>DTPlatformName</key>
 	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>11.3</string>
+	<string>12.6</string>
 	<key>DTSDKBuild</key>
-	<string>20E214</string>
+	<string>21G113</string>
 	<key>DTSDKName</key>
-	<string>macosx11.3</string>
+	<string>macosx12.6.internal</string>
 	<key>DTXcode</key>
-	<string>1250</string>
+	<string>1330</string>
 	<key>DTXcodeBuild</key>
-	<string>12E262</string>
+	<string>13E6049a</string>
+	<key>IOKitPersonalities</key>
+	<dict>
+		<key>IntelCPUPowerManagementClient</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.driver.AppleIntelCPUPowerManagementClient</string>
+			<key>IOClass</key>
+			<string>AppleIntelCPUPowerManagementClient</string>
+			<key>IOMatchCategory</key>
+			<string>AppleIntelCPUPowerManagementDriver</string>
+			<key>IOProbeScore</key>
+			<integer>0</integer>
+			<key>IOProviderClass</key>
+			<string>AppleIntelCPUPowerManagement</string>
+			<key>IOResourceMatch</key>
+			<string>IOBSD</string>
+		</dict>
+	</dict>
 	<key>LSMinimumSystemVersion</key>
-	<string>11.3</string>
-	<key>OSBundleCompatibleVersion</key>
-	<string>1.3.15</string>
+	<string>12.6</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2005-2016 Apple Inc. All rights reserved.</string>
 	<key>OSBundleLibraries</key>
 	<dict>
-		<key>com.apple.iokit.IOPCIFamily</key>
-		<string>1.0.0b1</string>
 		<key>com.apple.kpi.bsd</key>
 		<string>8.0.0</string>
 		<key>com.apple.kpi.iokit</key>
@@ -58,12 +76,10 @@
 		<string>8.0.0</string>
 		<key>com.apple.kpi.mach</key>
 		<string>8.0.0</string>
+		<key>com.apple.kpi.private</key>
+		<string>8.0.0</string>
 		<key>com.apple.kpi.unsupported</key>
 		<string>8.0.0</string>
 	</dict>
-	<key>OSBundleRequired</key>
-	<string>Root</string>
-	<key>Source Code</key>
-	<string>https://github.com/daliansky/OS-X-Fake-PCI-ID</string>
 </dict>
 </plist>

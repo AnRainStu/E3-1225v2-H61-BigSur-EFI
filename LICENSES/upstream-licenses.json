@@ -1,0 +1,51 @@
+[
+  {
+    "component": "OpenCorePkg",
+    "tag": "1.0.8",
+    "url": "https://raw.githubusercontent.com/acidanthera/OpenCorePkg/1.0.8/LICENSE.txt",
+    "licenseSpdx": "BSD-3-Clause",
+    "sha256": "4ca709aac88e7b297e794f464d6557203b23a4e92e792b579bb968fef2bce4c4"
+  },
+  {
+    "component": "Lilu",
+    "tag": "1.7.2",
+    "url": "https://raw.githubusercontent.com/acidanthera/Lilu/1.7.2/LICENSE.txt",
+    "licenseSpdx": "BSD-3-Clause",
+    "sha256": "74c3ca48189b796b0d262866e67de8efba77a71516667ce68dc3a8f13c2a3c57"
+  },
+  {
+    "component": "VirtualSMC",
+    "tag": "1.3.8",
+    "url": "https://raw.githubusercontent.com/acidanthera/VirtualSMC/1.3.8/LICENSE.txt",
+    "licenseSpdx": "BSD-3-Clause",
+    "sha256": "5bceff635b9952d36af4e784ee02158cdddb6001584439cbd8a3520eb46a28e8"
+  },
+  {
+    "component": "WhateverGreen",
+    "tag": "1.7.1",
+    "url": "https://raw.githubusercontent.com/acidanthera/WhateverGreen/1.7.1/LICENSE.txt",
+    "licenseSpdx": "BSD-3-Clause",
+    "sha256": "8f99f6082ccc808df2ece79446108bfd5c0c04da9ba81c5463568ced862a0b05"
+  },
+  {
+    "component": "CryptexFixup",
+    "tag": "1.0.5",
+    "url": "https://raw.githubusercontent.com/acidanthera/CryptexFixup/1.0.5/LICENSE.txt",
+    "licenseSpdx": "BSD-3-Clause",
+    "sha256": "5430a95ed582a14fead4ed5339c410dc714c3cba89966094b393e549f2b8b4d6"
+  },
+  {
+    "component": "RestrictEvents",
+    "tag": "1.1.6",
+    "url": "https://raw.githubusercontent.com/acidanthera/RestrictEvents/1.1.6/LICENSE.txt",
+    "licenseSpdx": "BSD-3-Clause",
+    "sha256": "e6a427bf43f8210c082a6527a7ca5d2b5a0d22309d9828ffcdf0614d352e758f"
+  },
+  {
+    "component": "OpenCore-Legacy-Patcher",
+    "tag": "2.5.1",
+    "url": "https://raw.githubusercontent.com/dortania/OpenCore-Legacy-Patcher/2.5.1/LICENSE.txt",
+    "licenseSpdx": "NOASSERTION",
+    "sha256": "88a5f6b6b3fa4ee9578cbc352c64b4e1a74b834a3070fcb176da514a0100eab1"
+  }
+]

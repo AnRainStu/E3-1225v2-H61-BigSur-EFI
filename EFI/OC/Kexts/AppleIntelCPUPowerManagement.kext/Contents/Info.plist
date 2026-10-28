@@ -3,53 +3,55 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>21E258</string>
+	<string>20A241133</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>Innie</string>
+	<string>AppleIntelCPUPowerManagement</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.cdf.Innie</string>
+	<string>com.apple.driver.AppleIntelCPUPowerManagement</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Innie</string>
+	<string>Intel CPU Low Level Power Management</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.1</string>
+	<string>222.0.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.3.1</string>
+	<string>222.0.0</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>13E500a</string>
+	<string>21G113</string>
 	<key>DTPlatformName</key>
 	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>12.3</string>
+	<string>12.6</string>
 	<key>DTSDKBuild</key>
-	<string>21E226</string>
+	<string>21G113</string>
 	<key>DTSDKName</key>
-	<string>macosx12.3</string>
+	<string>macosx12.6.internal</string>
 	<key>DTXcode</key>
-	<string>1331</string>
+	<string>1330</string>
 	<key>DTXcodeBuild</key>
-	<string>13E500a</string>
+	<string>13E6049a</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>com.cdf.Innie</key>
+		<key>IntelCPUPowerManagement</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
-			<string>com.cdf.Innie</string>
+			<string>com.apple.driver.AppleIntelCPUPowerManagement</string>
 			<key>IOClass</key>
-			<string>Innie</string>
+			<string>AppleIntelCPUPowerManagement</string>
 			<key>IOMatchCategory</key>
-			<string>Innie</string>
+			<string>AppleIntelCPUPowerManagement</string>
 			<key>IOProviderClass</key>
 			<string>IOResources</string>
 			<key>IOResourceMatch</key>
@@ -57,17 +59,23 @@
 		</dict>
 	</dict>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.13</string>
+	<string>12.6</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2020-2022 cdf. All rights reserved.</string>
+	<string>Copyright © 2005-2016 Apple Inc. All rights reserved.</string>
 	<key>OSBundleLibraries</key>
 	<dict>
+		<key>com.apple.kpi.bsd</key>
+		<string>8.0.0</string>
 		<key>com.apple.kpi.iokit</key>
-		<string>9.0.0</string>
+		<string>8.0.0</string>
 		<key>com.apple.kpi.libkern</key>
-		<string>9.0.0</string>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.mach</key>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.private</key>
+		<string>8.0.0</string>
+		<key>com.apple.kpi.unsupported</key>
+		<string>8.0.0</string>
 	</dict>
-	<key>OSBundleRequired</key>
-	<string>Root</string>
 </dict>
 </plist>

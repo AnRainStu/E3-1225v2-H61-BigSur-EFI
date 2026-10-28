@@ -1,93 +1,77 @@
-# E3-1225v2 / H61 X7-VB / Big Sur EFI
+# E3-1225 v2 / H61 X7-VB / Quadro K420 / Ventura EFI
 
-用于 **Xeon E3-1225 v2 + H61 X7-VB V3.2 + Intel HD Graphics P4000** 的 OpenCore EFI。
-目标系统为 **macOS Big Sur 11.7.10 (20G1427)**，使用 SATA 系统盘、主板 HDMI 直连。
+用于 **Xeon E3-1225 v2 + H61 X7-VB V3.2 + Quadro K420 + SATA 系统盘** 的 OpenCore 配置，目标系统为 **macOS Ventura 13.7.8 (22H730)**。
 
-这份配置针对“能显示核显型号和 1536 MB 显存，但窗口动画卡顿、加速服务没有启动”的问题，增加了带硬件条件检查的 **H61 MEI 恢复 SSDT**。发布者在这台机器上反馈修复后已可用。
+当前分支：`ventura-k420`。原来的 **Big Sur / P4000 核显配置**保留在 [main 分支](https://github.com/AnRainStu/E3-1225v2-H61-BigSur-EFI/tree/main)。两份 EFI 对应不同显卡和系统。
 
-> 适用范围是下表中的实机配置，不是通用 H61 EFI。公开配置已清空机器身份信息，使用前必须自行生成 SMBIOS。
+这是特定实机的配置与第三方组件集合。公开版已清空机器身份，使用前必须自行填写 SMBIOS；第三方组件遵循各自许可。
 
-## 实机环境与验证范围
+## 硬件与验证范围
 
-| 项目 | 配置 / 结果 |
+| 项目 | 配置 / 状态 |
 | --- | --- |
-| CPU | Intel Xeon E3-1225 v2，Ivy Bridge，4 核 4 线程 |
-| 主板 | H61 X7-VB，V3.2，非品牌整机主板 |
-| BIOS | American Megatrends 4.6.5，日期 2025-05-20 |
+| CPU | Intel Xeon E3-1225 v2，Ivy Bridge，4 核；支持 AVX / F16C，不支持 AVX2 |
+| 主板 | H61 X7-VB V3.2，AMI BIOS 4.6.5，日期 2025-05-20 |
 | 内存 | 8 GB DDR3 |
-| 核显 | Intel HD Graphics P4000，原生 PCI ID 8086:016A |
-| 显示连接 | 主板 HDMI 直连；VGA 不在本次成功配置的验证范围 |
-| 系统 | macOS Big Sur 11.7.10，安装在 SATA 盘 |
-| OpenCore | 1.0.0 RELEASE，苹果标志与进度条，保留文件日志 |
-| SMBIOS | iMac15,1；序列号、MLB、UUID、ROM 由使用者填写 |
-| 启动 / 图形 | 发布者实机反馈修复后可用；尚未附修复后的 Metal / IORegistry 复测报告 |
-| 声音 / 睡眠 / DRM | 未单独完成验证，不据此宣称全部功能正常 |
-
-此前使用的 64 GB E2M2 PCIe 存储模块在格式化、APFS 转换时出现冻结，因此改用 SATA。包中保留 NVMeFix 1.1.3 文件，但**当前 config 没有启用 NVMeFix**；不将它描述为该存储模块的兼容性修复。
+| 显卡 | NVIDIA Quadro K420，显示器接独显 DP |
+| 核显 | 通过 `-wegnoigpu` 停用，未使用旧 P4000 注入和 MEI 恢复补丁 |
+| 系统盘 | SATA SSD；旧 E2M2 PCIe 存储模块曾在磁盘操作时冻结，不作为安装目标 |
+| 系统 | Ventura 13.7.8 (22H730) |
+| OpenCore | 1.0.8 RELEASE；苹果标志与进度条，未启用 `-v` |
+| SMBIOS | iMac18,2；公开版序列号、MLB、UUID 为空，ROM 为 6 字节零值占位 |
+| 系统启动 | 发布者已进入 Ventura 桌面 |
+| K420 图形 | 发布者反馈 OCLP 补丁后有加速，DP 直连桌面正常 4K |
+| Finder | 根据 25 份同一签名的报告加入 F16C 官方兼容修复；发布时尚无用户明确的修复后复测反馈 |
+| OpenCore 第一屏 | DEBUG 诊断确认可选模式仅 800×600、1280×1024；最高选中 1280×1024 |
+| 声音、睡眠、DRM、CPU 变频 | 未完成独立实机验证，不据此声称全功能正常 |
 
 ## 下载与使用
 
-1. 在 [Releases](https://github.com/AnRainStu/E3-1225v2-H61-BigSur-EFI/releases) 下载发布压缩包，或下载仓库 ZIP。
-2. 备份自己目前能启动的 EFI。确认主板、BIOS、显示连接与本仓库的适用范围。
-3. 使用 [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) 为 **iMac15,1** 生成独立身份，并使用 plist 编辑器填写 `EFI/OC/config.plist` 的 `PlatformInfo → Generic`：
+1. [下载本分支 ZIP](https://github.com/AnRainStu/E3-1225v2-H61-BigSur-EFI/archive/refs/heads/ventura-k420.zip)，先备份现有可启动 EFI。
+2. 使用 [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) 为 **iMac18,2** 生成自己的身份，在 `EFI/OC/config.plist → PlatformInfo → Generic` 填写：
 
-   | 字段 | 填写内容 |
+   | 字段 | 内容 |
    | --- | --- |
    | `SystemSerialNumber` | 自己生成的系统序列号 |
-   | `MLB` | 自己生成的 Board Serial |
+   | `MLB` | 自己生成的主板序列号 |
    | `SystemUUID` | 自己生成的 SmUUID |
-   | `ROM` | 自己设备对应的 6 字节 ROM 数据 |
+   | `ROM` | 自己设置的 6 字节设备 ROM 数据 |
 
-4. 使用与本配置匹配的 **OpenCore 1.0.0 ocvalidate** 检查修改后的 plist。
-5. 将 `EFI` 文件夹放到启动盘 ESP 分区根目录，从该盘的 UEFI 入口启动。建议先在启动盘上验证，再迁移到系统盘。
+3. 使用 **OpenCore 1.0.8** 配套的 `ocvalidate` 检查修改后的配置。
+4. 将 `EFI` 文件夹复制到启动盘 ESP 根目录，从该盘的 UEFI 入口启动；显示器接 K420。
+5. 安装 / 启动 Ventura 后，使用 [OCLP 2.5.1](https://github.com/dortania/OpenCore-Legacy-Patcher/releases/tag/2.5.1) 的 **Post-Install Root Patch** 安装 NVIDIA Kepler 补丁，按提示重启。这里的 EFI 不能替代系统根卷显卡补丁。
 
-仓库不包含 macOS 安装镜像、个人身份信息、原始 SysReport、IORegistry 或启动日志。请勿把填入身份信息后的 config 或未脱敏日志提交到公开仓库。
+OCLP 在这里用于根卷补丁；引导继续使用本分支 EFI。配置只针对 Ventura，相关兼容组件限定在 Darwin 22 内核范围，不据此支持 Sonoma、Sequoia 或更新系统。
 
-## 核显与 MEI 修复
+## Ventura / Ivy Bridge 兼容项
 
-修复前日志显示 Capri 和 HD4000 驱动存在，但没有真正的 `IntelAccelerator` 服务；IMEI 只有 ACPI 占位。随后 SysReport 显示，固件 PCI 列表里也没有 `00:16.0` MEI。
+- **CryptexFixup 1.0.5**：用于此非 AVX2 CPU 的 Ventura 兼容。
+- **AppleIntelCPUPowerManagement + Client**：从 OCLP 2.5.1 payload 继承的旧 CPU 电源管理组件；`AppleCpuPmCfgLock=true`，`DummyPowerManagement=false`。
+- **AMFIPass 1.4.1**、SIP `0x803`（`03080000`）、`SecureBootModel=Disabled` 及两项 Library Validation 补丁：与 OCLP 根卷补丁配套。
+- **RestrictEvents 1.1.6 + `revpatch=f16c`**：避免 Ivy Bridge 在 macOS 13.3+ 的 CoreGraphics `resample_horizontal_f16c` 路径触发非法指令。
+- `revblock=none`，不默认屏蔽照片分析等进程；`ipc_control_port_options=0` 保留在当前配置中。
+- NVRAM Delete 已覆盖相应启动参数，便于配置更新生效。
 
-本版没有仅靠改显卡名称判断加速，而是尝试在 macOS 启动时恢复 MEI 接口：
+F16C 修复不会改写 CPU 固件。更多依据、限定范围和已知问题见 [Ventura 说明](docs/VENTURA-NOTES.md)。
 
-- 对精确匹配的 DSDT，将原 `PCI0._INI` 重命名为 `XINI`，新方法先执行原初始化。
-- 仅在 Darwin、LPC ID `1C5C8086`、启用的 RCBA 基址 `FED1C000` 匹配时继续。
-- 读取 RCBA + `0x3428`（FD2）；如果读值有效且 bit 1 为 1，则只清除这个 MEI1 禁用位。
-- 保留其他寄存器位，并提供读取结果与状态属性，供后续验证。
+## BIOS 与第一屏分辨率
 
-完整条件、状态码、限制和上游依据见 [MEI 修复说明](docs/MEI-FIX.md)。源代码位于 [SSDT-IMEI-H61.dsl](Sources/SSDT-IMEI-H61.dsl)。
+保留这块板已经能启动的 BIOS 设置。**本机将 Video OpROM 改为 UEFI First 后曾卡在开机画面，连 BIOS 都无法进入；本分支不要求为提升分辨率而修改该项或关闭 CSM。** SATA 模式使用 AHCI，主板 Secure Boot 关闭，启动盘仍走 UEFI 入口。
 
-这项修改不是 BIOS / ME 固件刷写。若板子不同、ME 固件本身异常或隐藏位原本没有置位，不能假定同一补丁会有效。移除本版补丁并恢复原 EFI 后，应完整断电冷启动再比较结果。
+`Resolution=Max`、`UIScale=0`、`ProvideConsoleGop=true` 已配置。诊断确认当前固件提供的最高模式为 **1280×1024**；桌面正常 4K 不代表引导第一屏具备 4K 模式。此分支没有完成 GOP / VBIOS 4K 改造，也没有刷写 BIOS、ME 或显卡固件。
 
-保留的图形配置包括 `device-id=0166`、`igfxframe=0x0166000B`、WhateverGreen 和 FakePCIID。不要直接用这份 Big Sur 配置升级系统；Monterey 及以上的 Ivy Bridge 核显支持需要另外处理。
+系统更新可能移除 OCLP 根卷补丁，更新后需要重新检查并按 OCLP 提示补丁。当前没有单独的 `SSDT-PM`，CPU 变频是否需要定制表仍需本机数据验证；不能直接复制其他 CPU 的表。
 
-## 组件版本
+## 组件与校验
 
-| 组件 | 版本 | 本配置状态 |
-| --- | --- | --- |
-| OpenCore / OpenRuntime / OpenCanopy | 1.0.0 RELEASE | 启用 |
-| Lilu | 1.6.7 | 启用 |
-| VirtualSMC | 1.3.2 | 启用 |
-| WhateverGreen | 1.6.6 | 启用 |
-| FakePCIID | 1.3.16 | Big Sur 20.4.0–20.99.99 启用 |
-| FakePCIID_Intel_HD_Graphics | 1.3.15 | Big Sur 20.4.0–20.99.99 启用 |
-| AppleALC | 1.9.0 | 启用；板载音频未单独验证 |
-| RealtekRTL8111 | 2.4.2 | 启用 |
-| RealtekRTL8100 | 2.0.1 | 启用 |
-| Innie | 1.3.1 | 启用 |
-| NVMeFix | 1.1.3 | 文件保留，未启用 |
-| HfsPlus / NvmExpressDxe | 基础 EFI 所含版本 | 启用 |
+完整版本与来源见 [components.json](components.json)，EFI 文件的 SHA-256 见 [checksums.sha256](checksums.sha256)。公开配置通过 OpenCore 1.0.8 `ocvalidate`，并检查了配置引用、内核范围、正式版核心文件以及机器身份清除情况，见 [发布校验记录](docs/validation.json)。
 
-## 验证与诊断
-
-- 公共 config 通过 OpenCore 1.0.0 `ocvalidate`。
-- 定制 AML 编译通过；9 项 ACPICA 模拟检查覆盖目标分支、错误芯片 / 地址保护、原初始化保留等情况。模拟结果见 `docs/mei-simulation-results.json`，模拟不等于实机寄存器或 Metal 验证。
-- `checksums.sha256` 记录发布 EFI 和定制 SSDT 源码的 SHA-256。
-- 在已安装的 macOS 上运行 `tools/CollectGraphics.command` 可收集显示、驱动和 MEI 状态。工具只读取状态，输出的日志包含设备信息，请检查并脱敏后再分享。
-
-显卡名称或 1536 MB 显存本身不能证明加速。应结合“系统信息 → 图形卡 / 显示器”中的 Metal 状态、`IntelAccelerator` 服务和实际窗口动画判断。
+本分支不包含安装镜像、OCLP 安装包、原始诊断报告、VBIOS、NVFlash 工具或机器身份。使用者填写身份后的 config 和原始日志应保留在自己的设备上。
 
 ## 来源与许可
 
-基础配置来自 [raywcm/OpenCore-EFI-for-e3_1225v2-igpu](https://github.com/raywcm/OpenCore-EFI-for-e3_1225v2-igpu)，快照提交 `597fd19a1f9c91a083568df14a842fbac49ecfe2`；在其基础上保留已能启动的设置，加入 P4000 兼容组件和本机 MEI 修复。
+基础配置继承自 [raywcm 的 E3-1225v2 核显 EFI](https://github.com/raywcm/OpenCore-EFI-for-e3_1225v2-igpu/tree/597fd19a1f9c91a083568df14a842fbac49ecfe2)，Ventura 兼容处理参考 [OCLP 2.5.1](https://github.com/dortania/OpenCore-Legacy-Patcher/tree/2.5.1) 及 [Ivy Bridge 专项指南](https://github.com/5T33Z0/OCLP4Hackintosh/blob/main/Guides/Ivy_Bridge.md)。
 
-第三方 OpenCore、驱动和资源继续遵循各自许可，详见 [第三方来源](THIRD_PARTY.md) 与 `LICENSES/`。本仓库的原创文档和新增脚本 / SSDT 源码按根目录 [LICENSE](LICENSE) 许可；该许可不重新授权第三方二进制、资源或上游配置。
+This product includes software developed by Dortania and OpenCore Legacy Patcher contributors.
+
+原创文档与脚本适用根目录 [LICENSE](LICENSE)。第三方程序、驱动、资源和继承的配置仍适用各自许可，不因仓库公开而统一改为 MIT，详见 [THIRD_PARTY.md](THIRD_PARTY.md) 与 `LICENSES/`。

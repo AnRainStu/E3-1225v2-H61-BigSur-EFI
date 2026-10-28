@@ -12,3 +12,10 @@ E3-HD4000-*/
 *.dsl.bak
 config.local.plist
 config.private.plist
+
+# Private crash reports and GPU firmware diagnostics.
+*.ips
+*.rom
+Results/
+E3-K420-VBIOS-ReadOnly/
+private-identity.json

@@ -1,0 +1,143 @@
+{
+  "target": "macOS Ventura 13.7.8 (22H730)",
+  "OpenCore": "1.0.8 RELEASE",
+  "OCLPReference": "2.5.1",
+  "SMBIOS": "iMac18,2",
+  "kexts": [
+    {
+      "BundlePath": "Lilu.kext",
+      "Enabled": true,
+      "MinKernel": "",
+      "MaxKernel": "",
+      "version": "1.7.2",
+      "bundleIdentifier": "as.vit9696.Lilu"
+    },
+    {
+      "BundlePath": "VirtualSMC.kext",
+      "Enabled": true,
+      "MinKernel": "",
+      "MaxKernel": "",
+      "version": "1.3.8",
+      "bundleIdentifier": "as.vit9696.VirtualSMC"
+    },
+    {
+      "BundlePath": "WhateverGreen.kext",
+      "Enabled": true,
+      "MinKernel": "",
+      "MaxKernel": "",
+      "version": "1.7.1",
+      "bundleIdentifier": "as.vit9696.WhateverGreen"
+    },
+    {
+      "BundlePath": "AppleALC.kext",
+      "Enabled": true,
+      "MinKernel": "",
+      "MaxKernel": "",
+      "version": "1.9.0",
+      "bundleIdentifier": "as.vit9696.AppleALC"
+    },
+    {
+      "BundlePath": "RealtekRTL8111.kext",
+      "Enabled": true,
+      "MinKernel": "",
+      "MaxKernel": "",
+      "version": "2.4.2",
+      "bundleIdentifier": "com.insanelymac.RealtekRTL8111"
+    },
+    {
+      "BundlePath": "RealtekRTL8100.kext",
+      "Enabled": true,
+      "MinKernel": "",
+      "MaxKernel": "",
+      "version": "2.0.1",
+      "bundleIdentifier": "com.insanelymac.RealtekRTL8100"
+    },
+    {
+      "BundlePath": "CryptexFixup.kext",
+      "Enabled": true,
+      "MinKernel": "22.0.0",
+      "MaxKernel": "22.99.99",
+      "version": "1.0.5",
+      "bundleIdentifier": "com.khronokernel.CryptexFixup"
+    },
+    {
+      "BundlePath": "AMFIPass.kext",
+      "Enabled": true,
+      "MinKernel": "22.0.0",
+      "MaxKernel": "22.99.99",
+      "version": "1.4.1",
+      "bundleIdentifier": "com.dhinakg.AMFIPass"
+    },
+    {
+      "BundlePath": "AppleIntelCPUPowerManagement.kext",
+      "Enabled": true,
+      "MinKernel": "22.0.0",
+      "MaxKernel": "22.99.99",
+      "version": "222.0.0",
+      "bundleIdentifier": "com.apple.driver.AppleIntelCPUPowerManagement"
+    },
+    {
+      "BundlePath": "AppleIntelCPUPowerManagementClient.kext",
+      "Enabled": true,
+      "MinKernel": "22.0.0",
+      "MaxKernel": "22.99.99",
+      "version": "222.0.0",
+      "bundleIdentifier": "com.apple.driver.AppleIntelCPUPowerManagementClient"
+    },
+    {
+      "BundlePath": "RestrictEvents.kext",
+      "Enabled": true,
+      "MinKernel": "22.4.0",
+      "MaxKernel": "22.99.99",
+      "version": "1.1.6",
+      "bundleIdentifier": "as.vit9696.RestrictEvents"
+    }
+  ],
+  "upstreamDownloads": [
+    {
+      "name": "Lilu-1.7.2-RELEASE.zip",
+      "digest": "sha256:53967d7dcfaab01023a33df2e969a89522f13d6654a6a56ac4711b62dabf3ab8",
+      "upstream": "https://github.com/acidanthera/Lilu/releases/download/1.7.2/Lilu-1.7.2-RELEASE.zip"
+    },
+    {
+      "name": "VirtualSMC-1.3.8-RELEASE.zip",
+      "digest": "sha256:2e29a8aaf91b4eb0bcdf5913ed17e70f5cf76531122acd4132eff7813a54de8b",
+      "upstream": "https://github.com/acidanthera/VirtualSMC/releases/download/1.3.8/VirtualSMC-1.3.8-RELEASE.zip"
+    },
+    {
+      "name": "WhateverGreen-1.7.1-RELEASE.zip",
+      "digest": "sha256:1bfdd2d40290ecce237606db121cbc01d7041179f03394bd59660a2ed52e5c95",
+      "upstream": "https://github.com/acidanthera/WhateverGreen/releases/download/1.7.1/WhateverGreen-1.7.1-RELEASE.zip"
+    },
+    {
+      "name": "CryptexFixup-1.0.5-RELEASE.zip",
+      "digest": "sha256:25041d94a0fe9a0261caf0ba89b36dfcb21682bf3c697a34bcaddc839576ab30",
+      "upstream": "https://github.com/acidanthera/CryptexFixup/releases/download/1.0.5/CryptexFixup-1.0.5-RELEASE.zip"
+    },
+    {
+      "name": "AMFIPass-v1.4.1-RELEASE.zip",
+      "git_blob_sha1": "b42fe05c39c4da22d239efedfb1111c51f226eee",
+      "upstream": "https://github.com/dortania/OpenCore-Legacy-Patcher/blob/2.5.1/payloads/Kexts/Acidanthera/AMFIPass-v1.4.1-RELEASE.zip"
+    },
+    {
+      "name": "AppleIntelCPUPowerManagement-v1.0.0.zip",
+      "git_blob_sha1": "d7158131a8cd94e968fa6051d5371e8eb26a8655",
+      "upstream": "https://github.com/dortania/OpenCore-Legacy-Patcher/blob/2.5.1/payloads/Kexts/Misc/AppleIntelCPUPowerManagement-v1.0.0.zip"
+    },
+    {
+      "name": "AppleIntelCPUPowerManagementClient-v1.0.0.zip",
+      "git_blob_sha1": "4c8c117deb32b55433bd53755158cd4fe1ac40d0",
+      "upstream": "https://github.com/dortania/OpenCore-Legacy-Patcher/blob/2.5.1/payloads/Kexts/Misc/AppleIntelCPUPowerManagementClient-v1.0.0.zip"
+    },
+    {
+      "name": "OpenCore-1.0.8-RELEASE.zip",
+      "digest": "sha256:2011e8b7216ecb2645d97ea710df965947edd406846e92050b9bc4190be6d27b",
+      "upstream": "https://github.com/acidanthera/OpenCorePkg/releases/download/1.0.8/OpenCore-1.0.8-RELEASE.zip"
+    },
+    {
+      "name": "RestrictEvents-1.1.6-RELEASE.zip",
+      "digest": "sha256:98170dfae195ddd28b5d95e3f040125a13ca783bcb9bd1e5b8c588e217b14ee6",
+      "upstream": "https://github.com/acidanthera/RestrictEvents/releases/download/1.1.6/RestrictEvents-1.1.6-RELEASE.zip"
+    }
+  ]
+}

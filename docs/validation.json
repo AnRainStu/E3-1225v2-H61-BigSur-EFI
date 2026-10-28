@@ -1,0 +1,20 @@
+{
+  "OpenCore": "1.0.8 RELEASE",
+  "ocvalidate": "No issues found",
+  "machineIdentityCleared": true,
+  "privacyScanPassed": true,
+  "configReferencesExist": true,
+  "releaseCoreHashesVerified": true,
+  "onlyMachineIdentityChangedFromPrivateConfig": true,
+  "F16cFixIncluded": true,
+  "F16cHardwareRetestConfirmed": false,
+  "firstScreen4KVerified": false,
+  "firstScreenGopModes": [
+    "800x600",
+    "1280x1024"
+  ],
+  "rawLogsIncluded": false,
+  "firmwareToolsIncluded": false,
+  "sanitizedConfigSha256": "8ebe942aabf00574284585936c6bb3831312b76c431088476519f9c5855d901b",
+  "efiFiles": 514
+}
