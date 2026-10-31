@@ -4,7 +4,7 @@
 
 | 内容 | 来源 | 许可 / 说明 |
 | --- | --- | --- |
-| 基础配置 | [raywcm](https://github.com/raywcm/OpenCore-EFI-for-e3_1225v2-igpu/tree/597fd19a1f9c91a083568df14a842fbac49ecfe2) | 继承 main 分支的来源记录；上游 README 标注 MIT，快照未附独立 LICENSE |
+| 基础配置 | [raywcm](https://github.com/raywcm/OpenCore-EFI-for-e3_1225v2-igpu/tree/597fd19a1f9c91a083568df14a842fbac49ecfe2) | 保留基础配置的来源记录；上游 README 标注 MIT，快照未附独立 LICENSE |
 | OpenCore、OpenRuntime、OpenCanopy | [OpenCorePkg 1.0.8](https://github.com/acidanthera/OpenCorePkg/tree/1.0.8) | BSD-3-Clause；LICENSES/OpenCorePkg.txt |
 | NvmExpressDxe、HfsPlus、Resources、SSDT-EC-DESKTOP | 基础 EFI 继承；相关上游为 [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg)、[OcBinaryData](https://github.com/acidanthera/OcBinaryData) | 保留继承文件和上游版权；未将这些资源重新授权 |
 | Lilu 1.7.2 | [源码](https://github.com/acidanthera/Lilu/tree/1.7.2) | BSD-3-Clause；LICENSES/Lilu.txt |

@@ -14,7 +14,7 @@ Ivy Bridge 支持 F16C，但没有 AVX2；相关系统路径错误使用了 AVX2
 
 发布者已用 OCLP 安装 NVIDIA Kepler 根卷补丁，并反馈有加速，DP 直连的 macOS 桌面正常 4K。本仓库仅包含 EFI；根卷补丁需要在安装的 macOS 中使用 OCLP 执行。
 
-未加入 NVIDIA Web Driver 专用参数，也未启用 `nv_disable=1`。原核显已通过 `-wegnoigpu` 停用，旧 Big Sur 的 MEI 解隐藏 SSDT 与 P4000 注入不在本分支使用。
+未加入 NVIDIA Web Driver 专用参数，也未启用 `nv_disable=1`。原核显已通过 `-wegnoigpu` 停用，本分支不使用 MEI 解隐藏 SSDT 或 P4000 注入。
 
 ## 第一屏 4K 未完成
 
